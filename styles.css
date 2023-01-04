@@ -95,6 +95,7 @@ button{
 }
 #testBTN{
   color: black;
+  box-shadow: 0px 0px 1rem white;
 }
 form{
   height: 520px;
@@ -107,7 +108,7 @@ form{
   border-radius: 10px;
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255,255,255,0.1);
-  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  box-shadow: 0px 0px 3rem white;
   padding: 50px 35px;
 }
 form *{
