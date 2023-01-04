@@ -1,10 +1,13 @@
 const modal = document.getElementById("myModal");
 const span = document.getElementsByClassName("close")[0];
-const modalText = document.getElementById("modal-text");
+let modalText = document.getElementById("modal-text");
 const input = document.getElementById("name");
-let btn = document.getElementById("testBTN");
-let form = document.getElementById("my-form");
-let nameInput = form.elements.name;
+const btn = document.getElementById("testBTN");
+const form = document.getElementById("my-form");
+const nameInput = form.elements.name;
+const emailInput = form.elements.email;
+const ageInput = form.elements.age;
+
 
 
 $(window).ready(function() {
@@ -18,14 +21,46 @@ $(window).ready(function() {
 });
 
 btn.addEventListener("click",()=>{
+    function createProfile(name, email, age){
+        if(name.length < 2){
+            alert("Name must be at least 2 characters long, Profile not created");
+            form.reset();
+            return false;
+        }
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if(!emailRegex.test(email)){
+            alert("Email is not valid, Profile not created");
+            form.reset();
+            return false;
+        }
+        const ageRegex = /^[0-9]{1,3}$/;
+        if(!ageRegex.test(age)){
+            alert("Age is not valid, Profile not created");
+            form.reset();
+            return false;
+        }
+        return {
+            name,
+            email,
+            age
+        }
+    }
+    const profile = createProfile(nameInput.value, emailInput.value, ageInput.value);
+    if(!profile){
+        return;
+    }
+
+    function addGitHubProfle(userName){
+        modalText.innerHTML = `<p>Name: ${profile.name}</p><p>Email: ${profile.email}</p><p>Age: ${profile.age}</p>`;
+        modalText.innerHTML += `<img src="https://github.com/${userName}.png" style="max-width:300px; max-height:300px" alt='Profile picture of ${userName}'>`;
+    }
     modal.style.display="block";
-    modalText = addGitHubProfle(nameInput.value); // yesh po bug
+
+    const profileImg = addGitHubProfle(nameInput.value);
+    form.reset();
 });
 
 
-function addGitHubProfle(event){
-    modalText.innerHTML = `<img src="https://github.com/${event}.png" style="max-width:300px; max-height:300px">`;
-}
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
     modal.style.display = "none";

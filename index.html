@@ -6,26 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
     <!-- The Modal -->
 <div id="myModal" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
         <!-- &times;  its a X -->
-      <span class="close" id="close"></span> 
+      <span class="close" id="close">&times;</span> 
       <p id="modal-text"></p>
     </div>
 </div>
 <form id="my-form">
     <div>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name">
+        <label>
+            GitHub Username:
+            <input type="text" id="name" name="name">
+            <span></span>
+        </label>
+        <br>
+        <label>
+            Email:
+            <input type="email" name="email">
+            <span></span>
+        </label>
+        <br>
+        <label>
+            Age:
+            <input type="number" name="age">
+            <span></span>
+        </label>
     </div>
     <button type="button" id="testBTN">Send</button>
 </form>
-
 
     <script src="/index.js"></script>
 </body>
