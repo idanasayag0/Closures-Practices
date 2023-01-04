@@ -6,6 +6,17 @@ let btn = document.getElementById("testBTN");
 let form = document.getElementById("my-form");
 let nameInput = form.elements.name;
 
+
+$(window).ready(function() {
+    $("#my-form").on("keypress", function (event) {
+        var keyPressed = event.keyCode || event.which;
+        if (keyPressed === 13) {
+            event.preventDefault();
+            return false;
+        }
+    });
+});
+
 btn.addEventListener("click",()=>{
     modal.style.display="block";
     modalText = addGitHubProfle(nameInput.value); // yesh po bug
